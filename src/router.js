@@ -1,0 +1,23 @@
+import { createRouter, createWebHistory } from "vue-router"
+import Questions from '@/components/Questions.vue'
+import Tags from '@/components/Tags.vue'
+import Answers from '@/components/Answers.vue'
+const routes = [
+    {
+        path: '/questions',
+        component: Questions
+    },
+    {
+        path: '/tags',
+        component: Tags
+    },
+    {
+        path: '/answers',
+        component: Answers
+    },
+]
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+})
+export default router
