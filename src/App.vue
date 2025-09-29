@@ -27,8 +27,8 @@
                             <InputText v-model="password" type="password" id="password" required placeholder="Пароль"
                                        class="m-2 sm:w-auto" :class="{'p-invalid': authError}" />
                             <Button type="submit" class="ml-2">Войти</Button>
-                            <div><small v-if="authError" class="error">{{ authError }}</small></div>
                         </form>
+                        <div><small v-if="authError" class="error">{{ authError }}</small></div>
                     </div>
                 </div>
             </template>
