@@ -21,7 +21,7 @@
                         <Button @click="logout" class="ml-4">Выйти</Button>
                     </div>
                     <div v-else>
-                        <form @submit.prevent="login" class="flex items-center gap-2">
+                        <form @submit.prevent="login" class="login-form flex items-center gap-2">
                             <InputText v-model="email" type="email" id="email" required placeholder="Логин"
                                        class="m-2 sm:w-auto" :class="{'p-invalid': authError}" />
                             <InputText v-model="password" type="password" id="password" required placeholder="Пароль"
@@ -104,5 +104,10 @@ export default {
 }
 a {
     color: black;
+}
+@media (max-width: 768px) {
+    .login-form {
+        flex-direction: column;
+    }
 }
 </style>
