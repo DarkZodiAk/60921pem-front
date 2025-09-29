@@ -18,7 +18,7 @@ export const useTagsDataStore = defineStore('tags_data', {
                 const response = await axios.get(backendUrl + '/tag', {
                     params: {
                         page: page,
-                        perPage: perPage,
+                        perpage: perPage,
                     },
                     headers: { Authorization: 'Bearer ' + token },
                 })

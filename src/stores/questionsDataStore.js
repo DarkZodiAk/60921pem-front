@@ -16,7 +16,7 @@ export const useQuestionsDataStore = defineStore('questions_data', {
                 const response = await axios.get(backendUrl + '/question', {
                     params: {
                         page: page,
-                        perPage: perPage
+                        perpage: perPage
                     }
                 })
                 this.questions = response.data;
