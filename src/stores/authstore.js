@@ -53,6 +53,10 @@ export const useAuthStore = defineStore('auth', {
         },
 
         async logout() {
+            await axios.get("http://127.0.0.1:8000/api/logout",
+            { headers: {
+                Authorization: 'Bearer ' + this.token
+            }});
             this.token = null
             this.user = null
             this.isAuthenticated = false
