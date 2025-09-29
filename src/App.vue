@@ -16,8 +16,9 @@
             </template>
             <template #end>
                 <div>
-                    <div v-if="isAuthenticated && user">
-                        <span class="pi pi-fw pi-user mr-4"/> {{ user.name }}
+                    <div v-if="isAuthenticated && user" class="flex gap-x-2 items-center">
+                        <span class="pi pi-fw pi-user mr-4"/>
+                        <span>{{ user.name }}</span>
                         <Button @click="logout" class="ml-4">Выйти</Button>
                     </div>
                     <div v-else>
