@@ -1,42 +1,72 @@
 <template>
-    <header>
-        <nav>
-            <ul>
-                <li><router-link to="/questions">Вопросы</router-link></li>
-                <li><router-link to="/tags">Теги</router-link></li>
-                <li><router-link to="/answers">Ответы</router-link></li>
-            </ul>
-            <div v-if="isAuthenticated && user">
-                Welcome, {{ user.name }}
-                <button @click="logout">Logout</button>
-            </div>
-            <div v-else>
-                <form @submit.prevent="login">
-                    <div>
-                        <label for="email">Email:</label>
-                        <input v-model="email" type="email" id="email" required />
+    <div class="flex flex-col w-full">
+        <Menubar :model="items">
+            <template #start>
+                <span>
+                    <img src="@/assets/nexus.png" width="50" alt="logo"/>
+                </span>
+            </template>
+            <template #item="{ item, props, hasSubmenu, root }">
+                <a class="flex items-center ml-6 p-4">
+                    <router-link v-if="item.route" :to="item.route">
+                        <span :class="item.icon"/>
+                        <span class="ml-2">{{ item.label }}</span>
+                    </router-link>
+                </a>
+            </template>
+            <template #end>
+                <div>
+                    <div v-if="isAuthenticated && user">
+                        <span class="pi pi-fw pi-user mr-4"/> {{ user.name }}
+                        <Button @click="logout" class="ml-4">Выйти</Button>
                     </div>
-                    <div>
-                        <label for="password">Password:</label>
-                        <input v-model="password" type="password" id="password" required />
+                    <div v-else>
+                        <form @submit.prevent="login" class="flex items-center gap-2">
+                            <InputText v-model="email" type="email" id="email" required placeholder="Логин"
+                                       class="m-2 sm:w-auto" :class="{'p-invalid': authError}" />
+                            <InputText v-model="password" type="password" id="password" required placeholder="Пароль"
+                                       class="m-2 sm:w-auto" :class="{'p-invalid': authError}" />
+                            <Button type="submit" class="ml-2">Войти</Button>
+                            <div><small v-if="authError" class="error">{{ authError }}</small></div>
+                        </form>
                     </div>
-                    <button type="submit">Login</button>
-                    <p v-if="authError" class="error">{{ authError }}</p>
-                </form>
-            </div>
-        </nav>
-    </header>
-    <router-view></router-view>
+                </div>
+            </template>
+        </Menubar>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
 import { useAuthStore } from "@/stores/authstore.js";
+import Button from 'primevue/button'
+import Menubar from 'primevue/menubar'
+import InputText from 'primevue/inputtext'
 export default {
+    components: {Button, Menubar, InputText},
     data() {
         return {
+            date: '',
             email: '',
             password: '',
             authStore: useAuthStore(),
+            items: [
+                {
+                    label: 'Вопросы',
+                    icon: 'pi pi-fw pi-question',
+                    route: '/questions'
+                },
+                {
+                    label: 'Теги',
+                    icon: 'pi pi-fw pi-tag',
+                    route: '/tags'
+                },
+                {
+                    label: 'Ответы',
+                    icon: 'pi pi-fw pi-envelope',
+                    route: '/answers'
+                },
+            ]
         }
     },
     computed: {
@@ -71,5 +101,8 @@ export default {
 <style scoped>
 .error {
     color: red;
+}
+a {
+    color: black;
 }
 </style>
