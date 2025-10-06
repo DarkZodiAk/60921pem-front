@@ -19,14 +19,14 @@
 <script>
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import { useTagsDataStore } from '@/stores/tagsDataStore.js'
+import { useTagsStore } from '@/stores/tagsStore.js'
 
 export default {
     name: 'Tags',
     components: { DataTable, Column },
     data() {
         return {
-            dataStore: useTagsDataStore(),
+            dataStore: useTagsStore(),
             perPage: 5,
             offset: 0,
         }

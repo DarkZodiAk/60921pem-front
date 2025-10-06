@@ -14,6 +14,11 @@
         <Column field="id" header="№"/>
         <Column field="title" header="Название вопроса"/>
         <Column field="content" header="Описание"/>
+        <Column header="Изображение" style="width: 180px">
+            <template #body="{ data }">
+                <div><img :src="data.picture_url" class="max-h-24 max-w-full" /></div>
+            </template>
+        </Column>
         <Column field="is_solved" header="Решен?"/>
         <template #footer>
             <div class="text-end" v-show="isAuthenticated">
@@ -27,7 +32,7 @@
 import DataTable from 'primevue/datatable'
 import Button from 'primevue/button'
 import Column from 'primevue/column'
-import { useQuestionsDataStore } from '@/stores/questionsDataStore.js'
+import { useQuestionsStore } from '@/stores/questionsStore.js'
 import { useAuthStore } from '@/stores/authstore.js'
 
 export default {
@@ -36,7 +41,7 @@ export default {
     data() {
         return {
             authStore: useAuthStore(),
-            dataStore: useQuestionsDataStore(),
+            dataStore: useQuestionsStore(),
             perPage: 5,
             offset: 0,
         }
