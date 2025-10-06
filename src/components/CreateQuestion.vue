@@ -86,15 +86,15 @@ import MultiSelect from 'primevue/multiselect'
 import FileUpload from 'primevue/fileupload'
 import Button from 'primevue/button'
 import Toast from 'primevue/toast'
-import {useQuestionsDataStore} from '@/stores/questionsDataStore.js'
-import {useTagsDataStore} from '@/stores/tagsDataStore.js'
+import {useQuestionsStore} from '@/stores/questionsStore.js'
+import {useTagsStore} from '@/stores/tagsStore.js'
 export default {
     name: 'CreateQuestion',
     components: {InputText, Textarea, MultiSelect, FileUpload, Button, Toast},
     data() {
         return {
-            tagsStore: useTagsDataStore(),
-            dataStore: useQuestionsDataStore(),
+            tagsStore: useTagsStore(),
+            dataStore: useQuestionsStore(),
             title: '',
             content: '',
             tags: [],

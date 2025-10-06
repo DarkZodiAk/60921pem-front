@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from 'axios';
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
-export const useTagsDataStore = defineStore('tags_data', {
+export const useTagsStore = defineStore('tags_data', {
     state: () => ({
         tags: [],
         tagsTotal: null,
