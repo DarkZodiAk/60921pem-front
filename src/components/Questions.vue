@@ -19,6 +19,13 @@
                 <div><img :src="data.picture_url" class="max-h-24 max-w-full" /></div>
             </template>
         </Column>
+        <Column header="Теги">
+            <template #body="{ data }">
+                <div class="flex flex-wrap gap-1">
+                    <span v-for="tag in data.tags" :key="tag.id">{{ tag.name }}</span>
+                </div>
+            </template>
+        </Column>
         <Column field="is_solved" header="Решен?"/>
         <template #footer>
             <div class="text-end" v-show="isAuthenticated">
