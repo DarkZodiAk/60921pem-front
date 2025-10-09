@@ -115,7 +115,7 @@ export default {
         }
     },
     mounted() {
-        this.tagsStore.getTags()
+        this.tagsStore.getAllTags()
     },
     methods: {
         onImageSelect(event) {

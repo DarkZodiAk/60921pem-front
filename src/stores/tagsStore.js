@@ -17,9 +17,23 @@ export const useTagsStore = defineStore('tags_data', {
                     params: {
                         page: page,
                         perpage: perPage,
-                    },
-                    headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+                    }
                 })
+                this.tags = response.data
+            } catch (error) {
+                if (error.response) {
+                    this.errorMessage = error.response.data.message
+                } else if (error.request) {
+                    this.errorMessage = error.message
+                }
+                console.log(error)
+            }
+        },
+
+        async getAllTags() {
+            this.errorMessage = ""
+            try {
+                const response = await axios.get(backendUrl + '/tags_all')
                 this.tags = response.data
             } catch (error) {
                 if (error.response) {

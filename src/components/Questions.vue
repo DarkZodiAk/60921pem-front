@@ -22,7 +22,7 @@
         <Column header="Теги">
             <template #body="{ data }">
                 <div class="flex flex-wrap gap-1">
-                    <span v-for="tag in data.tags" :key="tag.id">{{ tag.name }}</span>
+                    <span v-for="tag in data.tags" :key="tag.id">{{ tag.name }};</span>
                 </div>
             </template>
         </Column>
