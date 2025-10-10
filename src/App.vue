@@ -55,7 +55,7 @@ export default {
                 {
                     label: 'Вопросы',
                     icon: 'pi pi-fw pi-question',
-                    route: '/questions'
+                    route: '/'
                 },
                 {
                     label: 'Теги',

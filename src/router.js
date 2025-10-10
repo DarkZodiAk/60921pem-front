@@ -5,7 +5,7 @@ import Answers from '@/components/Answers.vue'
 import CreateQuestion from '@/components/CreateQuestion.vue'
 const routes = [
     {
-        path: '/questions',
+        path: '/',
         component: Questions
     },
     {
